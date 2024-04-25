@@ -1,6 +1,6 @@
 {
   "name": "@pup/plugin-web-interface",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "exports": {
     ".": "./mod.ts"
   },
@@ -8,11 +8,10 @@
     "build": "rm static/bundle.json; deno run --allow-read --allow-write jsr:@hexagon/bundlee --bundle static static/bundle.json && deno fmt && deno check mod.ts"
   },
   "exclude": [
-    "static",
-    "example"
-  ],
-  "include": [
-    "static/bundle.json"
+    "example",
+    "static/js",
+    "static/css",
+    "static/*.html"
   ],
   "fmt": {
     "exclude": ["static"]
