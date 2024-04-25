@@ -41,7 +41,8 @@ Follow these steps to test your changes:
 
 3. **Test the changes**
 
-   Browse to [http://localhost:5000](http://localhost:5000) to test your changes.
+   Browse to [http://localhost:5000](http://localhost:5000) to test your
+   changes.
 
 ## Contribution guidelines
 
