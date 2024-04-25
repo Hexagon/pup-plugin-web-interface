@@ -1,0 +1,58 @@
+# Deno files
+deno.lock
+/.idea/
+/node_modules
+.env
+*.orig
+*.pyc
+*.swp
+gicore
+
+# Pup files
+test.json
+test.jsonc
+*.log
+*.pid
+*.status
+.*-data
+.*-tmp
+test.sh
+.pup
+
+# Pup test files
+test_data_*.*
+status.json
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+# Ignore all local history of files
+.history
+.ionide
+
+# Ignore files named core, but not folders named core
+core
+!core/
+
+# Test coverage
+cov_profile
+*.lcov
+
+# Lumocs generated site
+_site
+
+# Node files
+.npmrc
+package-lock.json
+package.json

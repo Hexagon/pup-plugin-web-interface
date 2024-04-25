@@ -1,0 +1,27 @@
+{
+  "name": "@pup/plugin-web-interface",
+  "version": "1.0.0",
+  "exports": {
+    ".": "./mod.ts"
+  },
+  "tasks": {
+    "build": "rm static/bundle.json; deno run --allow-read --allow-write jsr:@hexagon/bundlee --bundle static static/bundle.json && deno fmt"
+  },
+  "exclude": [
+    "static",
+    "example"
+  ],
+  "include": [
+    "static/bundle.json"
+  ],
+  "fmt": {
+    "exclude": ["static"]
+  },
+  "imports": {
+    "@hexagon/bundlee": "jsr:@hexagon/bundlee@^0.9.6",
+    "@oak/oak": "jsr:@oak/oak@^16.0.0",
+    "@pup/api-client": "jsr:@pup/api-client@^1.0.1",
+    "@pup/api-definitions": "jsr:@pup/api-definitions@^1.0.0",
+    "@pup/plugin": "jsr:@pup/plugin@^1.0.0"
+  }
+}

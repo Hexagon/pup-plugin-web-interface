@@ -1,0 +1,28 @@
+{
+  "name": "pup-web-interface-example",
+  "processes": [
+    {
+      "id": "example-server",
+      "cmd": "deno run --allow-read --allow-env example-server.js",
+      "env": {
+        "TZ": "Europe/Berlin"
+      },
+      "autostart": true
+    },
+    {
+      "id": "example-task",
+      "cmd": "deno run --allow-read example-task.js",
+      "cron": "*/20 * * * * *",
+      "restartDelayMs": 3000
+    }
+  ],
+  "plugins": [
+    {
+      // Use full uri to plugin, e.g. jsr:@pup/plugin-web-interface
+      "url": "jsr:@pup/plugin-web-interface",
+      "options": {
+        "port": 6600
+      }
+    }
+  ]
+}
