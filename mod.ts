@@ -5,15 +5,11 @@
  * @file mod.ts
  */
 
-import { Application, Router } from "jsr:@oak/oak";
-import { dirname } from "jsr:@std/path";
-import { Bundlee } from "jsr:@hexagon/bundlee/mod.ts";
-import { PupRestClient } from "../pup-api-client/mod.ts";
-import {
-  type PluginConfiguration,
-  PluginImplementation,
-} from "../pup-plugin/mod.ts";
-//import { type ApiLogItem } from "@pup/api-definitions";
+import { Application, Router } from "@oak/oak";
+import { dirname } from "@std/path";
+import { Bundlee } from "@hexagon/bundlee/mod.ts";
+import { PupRestClient } from "@pup/api-client";
+import { type PluginConfiguration, PluginImplementation } from "@pup/plugin";
 
 interface Configuration {
   port: number;
@@ -182,9 +178,6 @@ export class PupPlugin extends PluginImplementation {
 
     // Set up route to serve static files using Bundlee
     this.app.use(async (context: any, next: any) => {
-      console.log(
-        dirname(import.meta.url) + "/static/bundle.json",
-      );
       const staticFiles = await Bundlee.load(
         dirname(import.meta.url) + "/static/bundle.json",
         "fetch",
