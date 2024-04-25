@@ -10,6 +10,11 @@ import { dirname } from "@std/path";
 import { Bundlee } from "@hexagon/bundlee/mod.ts";
 import { PupRestClient } from "@pup/api-client";
 import { type PluginConfiguration, PluginImplementation } from "@pup/plugin";
+import type {
+  ApiLogItem,
+  ApiProcessStateChangedEvent,
+} from "@pup/api-definitions";
+import type { EventHandler } from "@pup/common/eventemitter";
 
 interface Configuration {
   port: number;
@@ -212,7 +217,7 @@ export class PupPlugin extends PluginImplementation {
   }
 
   private handleWebSocketConnection(ws: WebSocket) {
-    const logStreamer = (d?: ApiLogItem) => {
+    const logStreamer: EventHandler<ApiLogItem> = (d?: ApiLogItem) => {
       if (d) {
         const logRow: ApiLogItem = {
           timeStamp: new Date().getTime(),
@@ -234,7 +239,9 @@ export class PupPlugin extends PluginImplementation {
         }
       }
     };
-    const ProcessStateStreamer = (d?: ProcessStateChangedEvent) => {
+    const processStateStreamer: EventHandler<ApiProcessStateChangedEvent> = (
+      d?: ApiProcessStateChangedEvent,
+    ) => {
       try {
         ws.send(JSON.stringify({
           type: "process_status_changed",
@@ -249,12 +256,18 @@ export class PupPlugin extends PluginImplementation {
       }
     };
     ws.onopen = () => {
-      this.client.on("log", logStreamer);
-      this.client.on("process_status_changed", ProcessStateStreamer);
+      this.client.on("log", logStreamer as EventHandler<unknown>);
+      this.client.on(
+        "process_status_changed",
+        processStateStreamer as EventHandler<unknown>,
+      );
     };
     ws.onclose = () => {
-      this.client.off("log", logStreamer);
-      this.client.off("process_status_changed", ProcessStateStreamer);
+      this.client.off("log", logStreamer as EventHandler<unknown>);
+      this.client.off(
+        "process_status_changed",
+        processStateStreamer as EventHandler<unknown>,
+      );
     };
   }
 

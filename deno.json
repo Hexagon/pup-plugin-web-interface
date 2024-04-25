@@ -5,7 +5,7 @@
     ".": "./mod.ts"
   },
   "tasks": {
-    "build": "rm static/bundle.json; deno run --allow-read --allow-write jsr:@hexagon/bundlee --bundle static static/bundle.json && deno fmt"
+    "build": "rm static/bundle.json; deno run --allow-read --allow-write jsr:@hexagon/bundlee --bundle static static/bundle.json && deno fmt && deno check mod.ts"
   },
   "exclude": [
     "static",
@@ -21,7 +21,8 @@
     "@hexagon/bundlee": "jsr:@hexagon/bundlee@^0.9.6",
     "@oak/oak": "jsr:@oak/oak@^16.0.0",
     "@pup/api-client": "jsr:@pup/api-client@^1.0.1",
-    "@pup/api-definitions": "jsr:@pup/api-definitions@^1.0.0",
+    "@pup/api-definitions": "jsr:@pup/api-definitions@^1.0.1",
+    "@pup/common": "jsr:@pup/common@^1.0.2",
     "@pup/plugin": "jsr:@pup/plugin@^1.0.0",
     "@std/path": "jsr:@std/path@^0.224.0"
   }
