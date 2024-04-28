@@ -63,6 +63,16 @@ export class PupPlugin extends PluginImplementation {
     this.startServer();
   }
 
+  /**
+   * Pup will periodically send new api tokens
+   *
+   * Make sure to override this and receive the new tokens
+   */
+  // deno-lint-ignore require-await
+  public async refreshApiToken(apiToken: string): Promise<void> {
+    this.client.refreshApiToken(apiToken);
+  }
+
   private setupRoutes() {
     // Set up WebSocket route
     this.router.get("/ws", async (context: any) => {
