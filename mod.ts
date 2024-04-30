@@ -23,8 +23,8 @@ interface Configuration {
 export class PupPlugin extends PluginImplementation {
   public meta = {
     name: "WebInterfacePlugin",
-    version: "1.0.0",
-    api: "1.0.0",
+    version: "1.0.3",
+    api: "1.0.3",
     repository: "https://github.com/hexagon/pup-plugin-web-interface",
   };
 
