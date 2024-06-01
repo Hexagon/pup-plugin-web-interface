@@ -70,7 +70,7 @@ async function updateInstance(instanceDataIn, processDataIn) {
     "#pup-memory-usage",
     formatBytes(instanceData.memory.rss, true),
   );
-  setTextContentBySelector("#pup-deno-version", instanceData.denoVersion.deno);
+  setTextContentBySelector("#pup-runtime", instanceData.runtime);
   setTextContentBySelector("#pup-version", instanceData.version);
   const uptime = new Date() - new Date(instanceData.started);
   setTextContentBySelector("#pup-uptime", formatTime(uptime / 1000));

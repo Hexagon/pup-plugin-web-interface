@@ -6,9 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.0] - 2024-06-01
+## [2.0.1] - 2024-06-01
 
-### Added
+- Fix regression; `Deno version` -> `Runtime`
+
+## [2.0.0] - 2024-06-01
 
 - Bumped major version, breaking changes in Pup api client
 
